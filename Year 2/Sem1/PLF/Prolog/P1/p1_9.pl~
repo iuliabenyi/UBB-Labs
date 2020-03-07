@@ -1,0 +1,17 @@
+%a. Insert an element on the position n in a list
+%
+%insert(l1..ln, e, x, pos) = [], if n == 0
+%                            l1 U e U insert(l2..ln, e, x, pos+1), if
+%                            pos == x
+%                            l1 U insert(l2,,ln, e, x, pos+1), otherwise
+insert([], _, _, _, []).
+insert([H|T], E, X, Pos, [H, E|R]):-
+    Pos =:= X - 1,
+    NewPos is Pos + 1,
+    insert(T, E, X, NewPos, R).
+insert([H|T], E, X, Pos, [H|R]):-
+    NewPos is Pos + 1,
+    insert(T, E, X, NewPos, R).
+
+insertMain(L, E, X, R):-
+    insert(L, E, X, 1, R).

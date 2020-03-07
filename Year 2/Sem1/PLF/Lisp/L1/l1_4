@@ -1,0 +1,92 @@
+;a) Write a function to return the sum of two vectors.
+;sumVectors(a1..an, b1..bm) = 0, if n = 0
+;								(a1 + b1) U sumVectors(a2..an, b2..bm), otherwise
+(defun sumVectors (a b)
+	(cond 
+		((null a) nil)
+		(T (cons (+ (car a) (car b)) (sumVectors (cdr a) (cdr b))))
+	)
+)
+
+;b) Write a function to get from a given list the list of all atoms, on any level, but on the same order
+;appendL(l1..ln, k) = k , if n == 0
+;						l1 U appendL(l2..ln, k), otherwise
+(defun appendL (l k)
+	(cond 
+		((null l) k)
+		(T (cons (car l) (appendL (cdr l) k)))
+	)
+)
+
+;atomsList(l1..ln) = nil, n = 0
+;					 l1 U atomsList(l2..ln), if l1 atom 
+;					 atomsList(l1) U atomsList(l2..ln), if l1 list
+(defun atomsList (l)
+	(cond 
+		((null l) nil)
+		((listp (car l)) (appendL (atomsList (car l)) (atomsList (cdr l))))
+		(T (cons (car l) (atomsList (cdr l))))
+	)
+)
+
+;c) Write a function that, with a list given as parameter, inverts only continuous sequences of atoms. Example:
+;reverseL(l1..ln) = nil, n = 0
+;					appendL(reverse(l2..ln), list(l1)), otherwise
+(defun reverseL (l)
+	(cond
+		((null l) nil)
+		(T (appendL (reverseL (cdr l)) (list (car l))))
+	)
+)
+
+;reverseAtoms(l1..ln, aux) = reverseL(aux), if n = 0
+;							 appendL(reverseL(aux), reverseAtoms(l1, nil) U reverseAtoms(l2..ln, nil)), if l1 list
+;							 reverseAtoms(l2..ln, appendL(aux, l1)), otherwise 
+(defun reverseAtoms (l aux)
+	(cond 
+		((null l) (reverseL aux))
+		((listp (car l)) (appendL (reverseL aux) (cons (reverseAtoms (car l) nil) (reverseAtoms (cdr l) nil))))
+		(T (reverseAtoms (cdr l) (appendL aux (list (car l)))))
+	)
+)
+
+;d) Write a list to return the maximum value of the numerical atoms from a list, at superficial level.
+;getMax(l1..ln, max) = max, if n = 0
+;						getMax(l2..ln, l1), if l1 > max and l1 number 
+;						getMax(l2..ln, max), otherwise
+(defun getMax (l maxi)
+	(cond 
+		((null l) maxi)
+		((and (numberp (car l)) (> (car l) maxi)) (getMax (cdr l) (car l)))
+		(T (getMax (cdr l) maxi))
+	)
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

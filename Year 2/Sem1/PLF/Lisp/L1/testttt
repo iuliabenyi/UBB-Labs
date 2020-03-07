@@ -1,0 +1,139 @@
+(defun g(l)
+	(mapcon #'list l)
+)
+(apply #'append (mapcon #'g'(1 2)))
+
+;(defun removeA(l)
+;	(cond 
+;		((null l) nil)
+;		((listp (car l)) (cons (removeA (car l)) (removeA (cdr l))))
+;		((= (mod (car l) 3) 0) (cons nil (cdr l)))
+;		(T (apply 'cons (mapcar 'removeA l)))
+;	)
+;)
+(defun listt(l)
+	(cond 
+		((null l) nil)
+		((= (mod (car l) 2) 0) (cons 99 (listt (cdr l))))
+		(T (listt (cdr l)))
+	)
+)
+
+(defun Fct(F L)
+	(cond 
+		((null l) nil)
+		((funcall F(car L)) (cons (funcall F(car l)) (Fct F (cdr L))))
+		(T nil)
+	)
+)
+
+(defun g2(l)
+	(list (car l) (car l))
+)
+;(setq q 'g2) 
+;(setq 	p q)
+
+(defun replaceOdd (tree e lev)
+	(cond 
+		((and (= (mod lev 2) 1) (atom tree)) e)
+		((atom tree) tree)
+		((listp tree) (mapcar #'(lambda (tree) (replaceOdd tree e (+ 1 lev))) tree))
+		(T (mapcar #'(lambda (tree) (replaceOdd tree e lev)) tree))
+	)
+)
+
+(defun f1 (x &rest y)
+	(cond 
+		((null y) x)
+		(T (append x(mapcar #'car y)))
+	)
+)
+
+(defun replaceK (el lev k)
+	(cond 
+		((and (= lev k) (atom el)) 0)
+		((atom el) el)
+		((listp el) (mapcar #'(lambda (el) (replaceK el (+ 1 lev) k)) el))
+		(T (mapcar #'(lambda (el) (replaceK el lev k)) el))
+	)
+)
+
+(defun removeDiv3 (el)
+	(cond 
+		((and (numberp el) (= (mod el 3) 0)) nil)
+		((atom el) el)
+		(T (mapcar #'(lambda (el) (removeDiv3 el)) el))
+	)
+)
+
+(defun removeOcc (l e)
+	(cond
+		((null l) nil)
+		((and (atom (car l)) (= (car l) e)) (removeOcc (cdr l) e))
+		((listp (car l)) (cons (removeOcc (car l) e) (removeOcc (cdr l) e)))
+		(T (cons (car l) (removeOcc (cdr l) e)))
+	)
+)
+
+(defun getAtoms (el)
+	(cond 
+		((atom el) (list el))
+		(T (apply #'append (mapcar #'getAtoms el)))
+	)
+)
+;count the number of sublists that end in a nonnumeric atom
+(defun solve (el)
+	(cond 
+		((atom el) 0)
+		((and (listp el) (not (numberp (car (reverse (getAtoms el)))))) (+ 1 (apply #'+ (mapcar #'solve el))))
+		(T (apply #'+ (mapcar #'solve el)))
+	)
+)
+
+(defun replace1 (l)
+	(cond 
+		((null l) nil)
+		((and (numberp (car l)) (evenp (car l))) (cons (+ 1 (car l)) (replace1 (cdr l))))
+		((listp (car l)) (cons (replace1 (car l)) (replace1 (cdr l))))
+		(T (cons (car l) (replace1 (cdr l))))
+	)
+)
+
+(defun replace2 (el)
+	(cond 
+		((and (numberp el) (evenp el)) (+ 1 el))
+		((atom el) el)
+		(T (mapcar #'replace2 el))
+	)
+)
+
+(defun good1 (l1 l2)
+	(funcall #'(lambda (temp)
+					(append temp 
+						(cond 
+							((null l1) (cdr l2))
+							(t (list temp (car l2)))
+						)
+					)
+				)
+			(good1 (car l1) l2)
+	)
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

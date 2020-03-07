@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head><title>Dog adoption list</title></head>
+<body style="background-color:powderblue;"><table border="1">
+<tr>
+<td>Name</td>
+<td>Age</td>
+<td>Breed</td>
+<td>Photo</td>
+</tr>
+<tr>
+<td>Fluffy</td>
+<td>3</td>
+<td>akita</td>
+<td>akita,https://cdn.japantimes.2xx.jp/wp-content/uploads/2018/11/n-akita-a-20181128-870x688.jpg</td>
+</tr>
+<tr>
+<td>Max</td>
+<td>2</td>
+<td>labrador</td>
+<td>labrador,https://previews.123rf.com/images/studiovandam/studiovandam1702/studiovandam170200114/71407250-labrador-puppy-on-a-white-background-the-labrador-retriever-also-labrador-is-a-type-of-retriever-gun.jpg</td>
+</tr>
+</table>
+</body>
+</html>

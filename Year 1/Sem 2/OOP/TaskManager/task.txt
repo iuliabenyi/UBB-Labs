@@ -1,0 +1,10 @@
+
+task11;closed;34
+task10;closed;2
+task7;closed;2
+task8;in progress;3
+task3;in progress;1
+task12;in progress;3
+taskkkk;in progress;1
+task1;open
+task9;0

@@ -1,0 +1,12 @@
+task1;open
+task8;in progress;3
+task5;closed;2
+task2;closed;1
+task9;open
+task6;open
+task3;in progress;1
+task11;closed;3
+task7;in progress;2
+task4;open
+task12;in progress;3
+task10;closed;2

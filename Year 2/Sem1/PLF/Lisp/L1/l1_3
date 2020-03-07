@@ -1,0 +1,95 @@
+;a) Write a function that inserts in a linear list a given atom A after the 2nd, 4th, 6th, ... element
+;insertAtom(l1..ln, a, pos1, pos) = nil, if n = 0
+;									l1 U a U insertAtom(l2..ln, a, pos1+2, pos+1), if pos == pos1
+;									l1 U insertAtom(l2..ln, a, pos1, pos+1), otherwise 
+(defun insertAtom (l a pos1 pos)
+	(cond 
+		((null l) nil)
+		((= pos pos1) (cons (car l) (cons a (insertAtom (cdr l) a (+ 2 pos1) (+ 1 pos)))))
+		(T (cons (car l) (insertAtom (cdr l) a pos1 (+ 1 pos))))
+	)
+)
+;(print (insertAtom '(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20) 999 1 0))
+
+;b) Write a function to get from a given list the list of all atoms, on any level, but reverse order
+;appendL(l1..ln, k) = k , if n == 0
+;						l1 U appendL(l2..ln, k), otherwise
+(defun appendL (l k)
+	(cond 
+		((null l) k)
+		(T (cons (car l) (appendL (cdr l) k)))
+	)
+)
+
+;atomsList(l1..ln) = nil, n == 0
+;					 appendL(atomsList(l2..ln), atomsList(l1)), if l1 list
+;					 appendL(atomsList(l2..ln), list(l1)), otherwise
+(defun atomsList (l)
+	(cond 
+		((null l) nil)
+		((listp (car l)) (appendL (atomsList (cdr l)) (atomsList (car l))))
+		(T (appendL (atomsList (cdr l)) (list (car l))))
+	)
+)
+
+;c) Write a function that returns the greatest common divisor of all numbers in a nonlinear list
+;gcd(a, b) = nil, if a and b not numbers
+;			 b, if a not number
+;			 a, if b not number
+;			 a, if b == 0
+;			 gcd(b, a%b), otherwise
+(defun myGcd (a b)
+    (cond
+        ((and (not (numberp a)) (not (numberp b))) nil)
+        ((not (numberp a)) b)
+        ((not (numberp b)) a)
+        ((equal b 0) a)
+        (T (myGcd b (mod a b)))
+    )
+)
+
+;gcdList(l1..ln) = l1, if l1 atom and n == 1 
+;					gcd(gcdList(l1), gcdList(l2..ln)), if l1 list
+;					gcd(l1, gcdList(l2..ln)), otherwise 
+(defun gcdList (l)
+	(cond 
+		((and (atom (car l)) (null (cdr l))) (car l))
+		((listp (car l)) (myGcd (gcdList (car l)) (gcdList (cdr l))))
+		(T (myGcd (car l) (gcdList (cdr l))))
+	)
+) 
+
+;d) Write a function that determines the number of occurrences of a given atom in a nonlinear list.
+;countOcc(l1..ln, e) = 0, if n == 0
+;						1 + countOcc(l2..ln, e), if l1 atom and l1 == e
+;						countOcc(l1, e) + countOcc(l2..ln, e), if l1 list
+;						countOcc(l2..ln, e), otherwise
+(defun countOcc (l e)
+	(cond 
+		((null l) 0)
+		((and (atom (car l)) (= (car l) e)) (+ 1 (countOcc (cdr l) e)))
+		((listp (car l)) (+ (countOcc (car l) e) (countOcc (cdr l) e)))
+		(T (countOcc (cdr l) e))
+	)
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

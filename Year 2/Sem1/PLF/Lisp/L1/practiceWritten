@@ -1,0 +1,337 @@
+
+																	A6
+I. 1. 
+(defun good1 (l1 l2)
+	(funcall #'(lambda (temp)
+					(append temp 
+						(cond 
+							((null l1) (cdr l2))
+							(t (list temp (car l2)))
+						)
+					)
+				)
+			(good1 (car l1) l2)
+	)
+)
+
+2. 
+f(l, s) = 0, if l null
+			 l1, if f(l2..ln, s1) < l1
+			 f(l2..ln, s1), otherwise
+- maximu dintr o lista 
+g(H, S, S1):-
+    H > 0,
+    S1 < H,!,
+    S is H.
+g(_, S, S1):-
+    S is S1.
+f1([], 0).
+f1([H|T], S):- f1(T,S1), g(H, S1, S).
+			
+3. apply #'append (mapcon #'g'(1 2))
+				(1 2) (2) (2) (1 2) (2)
+	(1 2 2 2)
+
+4.f(l) = [], if n == 0
+		 l1 U f(l2..ln)
+		 f(l2..ln), if l1 % 2 == 0
+f([1,2,3], L) = 1,2,3
+
+II. permutations with abs difference <= 3
+perm([],[]).
+perm([E|T],S):-perm(T,S1),
+    select(E,S,S1).
+prop([A,B]):-!,M is B-A,abs(M,R), R =<3.
+prop([A,B|T]):-prop([B|T]),M is B-A,abs(M,R), R =<3.
+oneSol(L,S):-perm(L,S),prop(S).
+allSol(L,R):-findall(Re,oneSol(L,Re),R).
+
+III. remove atoms div by 3 from all levels 
+(defun removeDiv3 (el)
+	(cond 
+		((and (numberp el) (= (mod el 3) 0)) nil)
+		((atom el) el)
+		(T (mapcar #'(lambda (el) (removeDiv3 el)) el))
+	)
+)
+aproape bine 
+
+-------------------------------------------------------------
+I.
+1. 
+(defun good2 (f l)
+	(funcall #' (lambda (x)
+					(cond 
+						((null l) nil)
+						(x (cons x (Fct f (cdr l))))
+						(t nil)
+					)
+				)
+				(funcall f (car l))
+	)
+)
+
+2. ca inainte 
+
+3. (A A)
+
+4. eroare, mergea daca era S is S1-H
+
+II. Arrangemets with product P
+%perm(l1..ln) = [], if n == 0
+%               select(l1, S, perm(l2..ln))
+perm2([], []).
+perm2([E|T], S):-
+    perm2(T, S1),
+    select(E, S, S1).
+
+%comb(l1..ln, k) = [], if k == 0
+%                  l1 U comb(l2..ln, k-1), if k > 0
+%                  comb(l2..ln, k), k > 0
+comb(_, 0, []).
+comb([H|T], K, [H|TR]):-
+    K > 0,
+    K1 is K - 1,
+    comb(T, K1, TR).
+comb([_|T], K, R):-
+    K>0,
+    comb(T, K, R).
+
+%arr(l, k) = perm(comb(l, k))
+arr(L, K, R):-
+    comb(L, K, R1),
+    perm(R1, R).
+
+propArr([], 1).
+propArr([H|T], P):- propArr(T, P1), P is P1*H.
+
+oneArr(L, K, P, R):-
+    arr(L, K, R),
+    propArr(R, R1),
+    R1 is P.
+
+allArr(L, K, P, R):-
+    findall(R1, oneArr(L, K, P, R1), R).
+	
+III. Replaces atoms from odd levels with the elem e
+(defun replaceOdd (tree e lev)
+	(cond 
+		((and (= (mod lev 2) 1) (atom tree)) e)
+		((atom tree) tree)
+		((listp tree) (mapcar #'(lambda (tree) (replaceOdd tree e (+ 1 lev))) tree))
+		(T (mapcar #'(lambda (tree) (replaceOdd tree e lev)) tree))
+	)
+)
+
+---------------------------------------------------------------------------
+
+I. 
+1. 
+(defun good3 (l)
+	(funcall #'(lambda (temp)
+					(cond 
+						((null l) 0)
+						((> temp 2) (+ 2 (car l) (f (cdr l))))
+						(t temp)
+					)
+				)
+				(f (car l))
+	)
+)
+
+2. f(l1..ln) = 0, if n == 0
+			   l1 + f(l2..ln), if l1 < f(l2..ln)
+			   f(l2..ln) + 2, otherwise 
+f([4,1,6,2,9])
+4 < f([1,6,2,9])     t => 7+4=11
+	   1 < f([6,2,9])      t => 6+1=7
+			  6 < f([2, 9])     f => 4+2=6
+					 2 < f([9])     f => 2+2=4
+					       9 < f([])   f => 0+2 = 2
+
+?????
+
+3. (1 2 3 4 5 7)
+	f '(1 2) -> (1 2)
+	f '(3 4) '(5 6) '(7 8)
+	   x->(3 4) y->(5) y->(7) 
+
+4.  ????
+
+II.
+subsets([], []).
+subsets([H|T], [H|S]):- subsets(T, S).
+subsets([_|T], S):- subsets(T, S).
+
+subsetsSum([], 0):-!.
+subsetsSum([H|T], S):- subsetsSum(T, S1), S is S1+H.
+subsetsCond(L, R):-
+    subsets(L, R),
+    subsetsSum(R, Su),
+    Su mod 3 =:= 0.
+allSubsets(L, R):-
+    findall(R1, subsetsCond(L, R1), R).
+
+cum fac chestia cu minim n elemente???
+
+III.
+(defun replaceK (el lev k)
+	(cond 
+		((and (= lev k) (atom el)) 0)
+		((atom el) el)
+		((listp el) (mapcar #'(lambda (el) (replaceK el (+ 1 lev) k)) el))
+		(T (mapcar #'(lambda (el) (replaceK el lev k)) el))
+	)
+)
+
+----------------------------------------------------------------------
+
+I. 
+1. the error: s1 is s - h 
+   correct: s is s1 - h, s is the output, not s1 
+
+2. reverse the list and its sublists
+%append(l1..ln, e) = [e], if n == 0
+%                    l1 U append(l2..ln), otherwise
+
+append([], E, [E]).
+append([H|T], E, [H|R]):-
+    append(T, E, R).
+
+%lengthL(l1..ln) = 0 , if n == 0
+%                  1 + lengthL(l2..ln), otherwise
+lengthL([], 0).
+lengthL([_|T], R):-
+    lengthL(T, R1),
+    R is R1 + 1.
+
+%reverse(l1..ln) = [], if n == 0
+%                  append(reverse(l2..ln), l1), otherwise
+reverseL([], []).
+reverseL([H|T], R):-
+    reverseL(T, R1),
+    append(R1, H, R).
+nu merge si in subliste
+
+4. remove all occurences of an atom 
+(defun removeOcc (l e)
+	(cond
+		((null l) nil)
+		((and (atom (car l)) (= (car l) e)) (removeOcc (cdr l) e))
+		((listp (car l)) (cons (removeOcc (car l) e) (removeOcc (cdr l) e)))
+		(T (cons (car l) (removeOcc (cdr l) e)))
+	)
+)
+
+5. nr of sublists ending in nonnumeric atom 
+(defun getAtoms (el)
+	(cond 
+		((atom el) (list el))
+		(T (apply #'append (mapcar #'getAtoms el)))
+	)
+)
+;count the number of sublists that end in a nonnumeric atom
+(defun solve (el)
+	(cond 
+		((atom el) 0)
+		((and (listp el) (not (numberp (car (reverse (getAtoms el)))))) (+ 1 (apply #'+ (mapcar #'solve el))))
+		(T (apply #'+ (mapcar #'solve el)))
+	)
+)
+
+------------------------------------------------------------------
+
+I.
+1.
+f(l1..ln) = -1, if n = 0
+            f(l2..ln) + l1, if f(l2..ln) > 0
+			f(l2..ln), otherwise
+f([3,1,6,3,8]) = 
+f([1,6,3,8]) > 0
+f([6,3,8]) > 0
+f([3,8]) > 0    
+f([8]) > 0     
+f([]) = 
+???? de ce compara 8 cu 3????
+
+2. list -> set, 2 implementations
+exists([H|_], H):- !.
+exists([_|T], H):- exists(T, H).
+
+toSet([], []):- !.
+toSet([H|T], S):-
+    exists(T, H),
+    toSet(T, S).
+toSet([H|T], [H|S]):-
+    toSet(T, S).
+
+%toSet2(l1..ln, coll) = coll, if n = 0
+%                       toSet2(l2..ln, [l1|coll]), if not exists (coll,
+%                       l1)
+%                       toSet2(l2..ln, coll), otherwise
+toSet22([], Coll, Coll):- !.
+toSet22([H|T], R):-
+    not(exists(Coll, H)), !,
+    Coll2 = [H|Coll],
+    toSet22(T, Coll2, R).
+toSet22([_|T], Coll, R):-
+    toSet22(T, Coll, R).
+	
+3. replace even numbers with their successor, 2 rec impl 
+(defun replace1 (l)
+	(cond 
+		((null l) nil)
+		((and (numberp (car l)) (evenp (car l))) (cons (+ 1 (car l)) (replace1 (cdr l))))
+		((listp (car l)) (cons (replace1 (car l)) (replace1 (cdr l))))
+		(T (cons (car l) (replace1 (cdr l))))
+	)
+)
+
+(defun replace2 (el)
+	(cond 
+		((and (numberp el) (evenp el)) (+ 1 el))
+		((atom el) el)
+		(T (mapcar #'replace2 el))
+	)
+)
+
+-------------------------------------------------------------------
+
+1. (set 'L '(T nil T))
+   (eval (append '(or) L))
+
+2. remove elements on pos n, 2n, 4n etc
+removeSecond([], _, _, []).
+removeSecond([_|T], Pos1, Pos, R):-
+    Pos1 =:= Pos,
+    NewPos is Pos + 1,
+    NewPos1 is Pos1 * 2,
+    removeSecond(T, NewPos1, NewPos, R).
+removeSecond([H|T], Pos1, Pos, [H|R]):-
+    NewPos is Pos + 1,
+    removeSecond(T, Pos1, NewPos, R).
+	
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

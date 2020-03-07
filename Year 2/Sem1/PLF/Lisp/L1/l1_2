@@ -1,0 +1,91 @@
+;a) Write a function to return the product of two vectors.
+;dotProd(a1..an, b1..bm) = 0, if n == 0 
+;							0, if m == 0
+;							a1*b1 + dotProd(a2..an, b2..bm), otherwise 
+(defun dotProd (a b)
+	(cond 
+		((null a) 0)
+		((null b) 0)
+		(T (+ (* (car a) (car b)) (dotProd (cdr a) (cdr b))))
+	)
+)
+
+;b) Write a function to return the depth of a list. Example: the depth of a linear list is 1.
+;maximum(a, b) = a, if a > b
+;				 b, otherwise 
+(defun maximum (a b)
+	(cond 
+		((> a b) a)
+		(T b)
+	)
+)
+
+;depthL(l1..ln, x) = 0, if n == 0
+;				 	 maximum(depthL(l1, x+1), depthL(l2..ln, x)), if l1 list 
+;					 depthL(l2..ln, x), otherwise
+(defun depthL (l x)
+	(cond 
+		((null l) x)
+		((listp (car l)) (maximum (depthL (car l) (+ 1 x)) (depthL (cdr l) x)))
+		(T (depthL (cdr l) x))
+	)
+)
+
+;c) Write a function to sort a linear list without keeping the double values
+;insertElem(l1..ln, e) = e, if n == 0
+;						 l1..ln, if l1 == e
+;						 e U l1..ln, if e < l1
+;						 l1 U insertElem(l2..ln), otherwise 
+(defun insertElem (l e)
+	(cond 
+		((null l) (list e))
+		((= (car l) e) l)
+		((< e (car l)) (cons e l))
+		(T (cons (car l) (insertElem (cdr l) e)))
+	)
+)
+
+;sortL(l1..ln) = nil, n == 0
+;				 insertElem(sortL(l2..ln), l1), otherwise
+(defun sortL (l)
+	(cond 
+		((null l) nil)
+		(T (insertElem (sortL (cdr l)) (car l)))
+	)
+)
+
+;d) Write a function to return the intersection of two sets.
+;intersection(l1..ln, k1..km) = nil, if n = 0
+;								nil, if m = 0
+;								intersection(l2..ln, k1..km), if l1 < k1
+;								intersection(l1..ln, k2..km), if k1 < l1
+;								l1 U intersection(l2..ln, k2..km). if l1 == k1
+(defun intersection (l k)
+	(cond 
+		((null l) nil)
+		((null k) nil)
+		((< (car l) (car k)) (intersection (cdr l) k))
+		((< (car k) (car l)) (intersection l (cdr k)))
+		((= (car l) (car k)) (cons (car l) (intersection (cdr l) (cdr k))))
+	)
+)
+;merge daca dau abort, skip la erori
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

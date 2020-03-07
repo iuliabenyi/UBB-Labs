@@ -1,0 +1,1 @@
+name1;constellation1;1;2;3;name2;constellation2;4;5;6;name3;constellation3;7;8;9;name4;constellation1;10;11;12;name5;constellation2;12;13;14;name6;constellation1;11;12;13;name7;constellation3;11;12;13;name8;constellation3;12;11;13;

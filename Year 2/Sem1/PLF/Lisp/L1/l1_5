@@ -1,0 +1,64 @@
+;a) Write twice the n-th element of a linear list. Example: for (10 20 30 40 50) and n=3 will produce (10 20 30 30 40 50).
+;twice(l1..ln, pos1, pos) = nil, if n = 0
+;							l1 U l1 U twice(l2..ln, pos1, pos + 1), if pos1 == pos
+;							l1 U twice(l2..pos1, pos + 1), otherwise
+(defun twice (l pos1 pos)
+	(cond 
+		((null l) nil)
+		((= pos1 pos) (cons (car l) (cons (car l) (twice (cdr l) pos1 (+ 1 pos)))))
+		(T (cons (car l) (twice (cdr l) pos1 (+ 1 pos))))
+	)
+)
+
+;b) Write a function to return an association list with the two lists given as parameters.
+; Example: (A B C) (X Y Z) --> ((A.X) (B.Y) (C.Z)).
+;assoc(l1..ln, k1..km) = nil, n = 0
+;						 list(l1, k1) U assoc(l2..ln, k2..km), otherwise
+(defun association (l k)
+	(cond 
+		((null l) nil)
+		(T (cons (list (car l) (car k)) (association (cdr l) (cdr k))))
+	)
+)
+
+;c) Write a function to determine the number of all sublists of a given list, on any level. A sublist is either the list itself, or any element that is a list, at any level.
+
+;countSublists(l1..ln) = 0, if n = 0
+;						 1 + countSublists(l1) U countSublists(l2..ln), if l1 list 
+;						 countSublists(l2..ln), otherwise
+(defun countSublists (l)
+	(cond 
+		((null l) 1)
+		((listp (car l)) (+ (countSublists (car l)) (countSublists (cdr l))))
+		(T (countSublists (cdr l)))
+	)
+)
+
+;d) Write a function to return the number of all numerical atoms in a list at superficial level.
+;countNumbers(l1..ln) = 0 if n == 0
+;						1 + countNumbers(l2..ln), if l1 number
+;						countNumbers(l2..ln), otherwise 
+(defun countNumbers (l)
+	(cond 
+		((null l) 0)
+		((numberp (car l)) (+ 1 (countNumbers (cdr l))))
+		(T (countNumbers (cdr l)))
+	)
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

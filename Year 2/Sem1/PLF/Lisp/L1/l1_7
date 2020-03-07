@@ -1,0 +1,94 @@
+;a) Write a function to eliminate the n-th element of a linear list.
+;removeN(l1..ln, x, pos) = nil, if n == 0
+;							removeN(l2..ln, x, pos+1), if pos == n
+;							l1 U removeN(l2..ln, x, pos+1), otherwise 
+(defun removeN (l x pos)
+	(cond
+		((null l) nil)
+		((= pos x) (removeN (cdr l) x (+ 1 pos)))
+		(T (cons (car l) (removeN (cdr l) x (+ 1 pos))))
+	)
+)
+
+;b) Write a function to determine the successor of a number represented digit by digit as a list, without transforming the representation of the number from list to number. Example: (1 9 3 5 9 9) --> (1 9 3 6 0 0)
+;append(l1..ln, e) = [e], if n == 0
+;                    l1 U append(l2..ln), otherwise
+(defun appendL (l e)
+	(cond 
+		((null l) e)
+		(T (cons (car l) (appendL (cdr l) e)))
+	)
+)
+
+;lengthL(l1..ln) = 0 , if n == 0
+;                  1 + lengthL(l2..ln), otherwise
+(defun lengthL (l)
+	(cond 
+		((null l) 0)
+		(T (+ 1 (lengthL (cdr l))))
+	)
+)
+
+;reverse(l1..ln) = [], if n == 0
+;                  append(reverse(l2..ln), l1), otherwise
+(defun reverseL (l)
+	(cond 
+		((null l) nil)
+		(T (appendL (reverseL (cdr l)) (car l)))
+	)
+)
+
+
+;%sum(l1..ln, k1..km, c) = [], n = 0 and m = 0 and c = 0
+;                         [1], n = 0 and m = 0 and c = 1
+;                         (k1 + c) + sum([], k2..km, 0), n = 0 and k1 +
+;c < 10
+;                         ((k1 + c)%10) + sum([], k2..km, 1), n =0 and k1 + c > 10
+;                         (l1 + k1 + c) + sum(l2..ln,k2..km, 0), l1 + k1 + c < 10
+;                         ((l1+k1+c)%10) + sum(l2..ln, k2..km, 2), l1 + k1 + c >10
+(defun sum (l k c)
+	(cond 
+		((and (null l) (and (null k) (= c 0))) nil)
+		((and (null l) (and (null k) (= c 1))) l)
+		((and (null l) (< (+ (car k) c) 10)) (+ (+ (car k) c) (sum nil (cdr k) 0)))
+		((and (null l) (> (+ (car k) c) 10)) (+ (mod (+ (car k) c) 10) (sum nil (cdr k) 1)))
+		((< (+ (car l) (+ (car k) c)) 10) (+ (+ (car l) (+ (car k) c)) (sum (cdr l) (cdr k) 0)))
+		((> (+ (car l) (+ (car k) c)) 10) (+ (mod (+ (car l) (+ (car k) c)) 10) (sum (cdr l) (cdr k) 2)))
+	)
+)
+
+; sumLists(l1...ln, k1...km) = l1...ln, m = 0
+;	                        k1...km, n = 0
+;                               reverse(sum(reverse(l1...ln),
+;                  		      reverse(k1...km), 0)), n <= m
+;                       	  reverse(sum(reverse(k1...km),
+;                        	 	reverse(l1...ln), 0)), otherwise
+(defun sumLists (l k)
+	((null k) l)
+	((null l) k)
+	((<= (lengthL l) (lengthL k)) (reverseL (sum (reverseL l) (reverseL l) 0)))
+	(T (reverseL (sum (reverseL l) (reverseL l) 0))) 
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

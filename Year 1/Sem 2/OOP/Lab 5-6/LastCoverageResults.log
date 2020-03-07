@@ -1,0 +1,21 @@
+[2019-04-14 18:52:53] [info] Start Program:
+Path:"C:\Users\Iulia\Desktop\OOP\OOP_Lab5-6\x64\Debug\OOP_Lab5-6.exe"
+Arguments:
+Working directory: "C:\Users\Iulia\Desktop\OOP\OOP_Lab5-6\OOP_Lab5-6\"
+Modules: Selected: C:\Users\Iulia\Desktop\OOP\OOP_Lab5-6\x64\Debug\OOP_Lab5-6.exe Excluded: 
+Sources: Selected: C:\Users\Iulia\Desktop\OOP\OOP_Lab5-6\OOP_Lab5-6 Excluded: 
+Log Level: Normal
+Cover Children: 0
+Aggregate by file: 1
+Continue after C++ exception: 0
+Optimized build support: 0
+Export: Binary C:\Users\Iulia\AppData\Local\Temp\phgw0ob4.vvq 
+Input coverage: 
+Unified diff: 
+Excluded line regular expressions: 
+Substitute pdb source paths: 
+
+[2019-04-14 18:52:53] [info] Module: C:\Users\Iulia\Desktop\OOP\OOP_Lab5-6\x64\Debug\OOP_Lab5-6.exe is selected because it matches selected pattern: C:\Users\Iulia\Desktop\OOP\OOP_Lab5-6\x64\Debug\OOP_Lab5-6.exe
+[2019-04-14 18:52:55] [info] ----------------------------------------------------
+[2019-04-14 18:52:55] [info] Coverage binary generated in file: C:\Users\Iulia\AppData\Local\Temp\phgw0ob4.vvq
+[2019-04-14 18:52:55] [info] ----------------------------------------------------
