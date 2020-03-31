@@ -1,0 +1,8 @@
+table{
+	border: 1px solid black;
+}
+table:hover td{
+	display:none
+}
+
+
