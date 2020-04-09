@@ -1,0 +1,527 @@
+.bodyBlue{
+	background-image: linear-gradient(#1e405d 10%,#2b5a83 90%);
+	height: 610px;
+	margin-left: -10px;
+	margin-right: -10px;
+}
+
+.topBar{
+	background-color: #1e2933;
+	overflow: hidden;
+	margin-left: -10px;
+	margin-top: -10px;
+	margin-right: -10px;
+	border: solid red 1px;
+}
+.topBar a {
+  float: left;
+  color: #858483;
+  font-family: sans-serif;
+  text-align: center;
+  padding: 16px 13px;
+  text-decoration: none;
+  font-size: 15px;
+  margin-left: 140px;
+}
+
+.topBar a.Python{
+	color: white;
+	background-color: #192229;
+}
+
+.pythonImg{
+	margin-left: 83px;
+	margin-top: 19px;
+}
+
+.Donate {
+  border-radius: 6px;
+  background-image: linear-gradient(#ffdf76 10%,#ffd343 90%);
+  padding: 10px; 
+  width: 53px;
+  height: 12px; 
+  margin-left: 733px;
+  margin-top: -54px;
+}
+
+.Donate:before{
+	content: "Donate";
+	font-family: sans-serif;
+	font-size: 14px;
+	color: #403e21;
+	line-height: 0.9;
+}
+
+.Search {
+  border-radius: 6px;
+  background-color: #1e2933;
+  padding: 10px; 
+  width: 415px;
+  height: 40px; 
+  margin-left: 815px;
+  margin-top: -46px;
+}
+
+.SearchWhite {
+  background-color: white;
+  padding: 10px; 
+  width: 204px;
+  height: 17px; 
+  margin-left: 868px;
+  margin-top: -51px;
+}
+
+.SearchWhite:before{
+	content: "Search";
+	font-family: sans-serif;
+	font-size: 15px;
+	color: #d5d5d5;
+}
+
+.GO {
+  border-radius: 6px;
+  background-image: linear-gradient(#3776ab 10%,#2b5b84 90%);
+  padding: 10px; 
+  width: 27px;
+  height: 20px; 
+  margin-left: 1103px;
+  margin-top: -40px;
+}
+
+.GO:before{
+	content: "GO";
+	font-family: sans-serif;
+	font-size: 14px;
+	color: white;
+	line-height: 1.6;
+}
+
+.Socialize{
+	font-family: sans-serif;
+	font-size: 15px;
+	color: #b5b4a7;
+	margin-left: 1173px;
+	margin-top: -25px;
+}
+
+.MiddleBar{
+	background-color: #1e2933;
+	overflow: hidden;
+	margin-left: 83px;
+	margin-right: 98px;
+	margin-top: 44px;
+	border-top-left-radius:8px;
+	border-bottom-left-radius:8px;
+	border-top-right-radius:8px;
+    border-bottom-right-radius:8px;
+	background-image: linear-gradient(#3f7db1 10%,#2e6492 90%);
+	box-shadow: 1px 1px 5px #292828;
+}
+.MiddleBar a {
+  float: left;
+  color: white;
+  font-family: sans-serif;
+  text-align: center;
+  padding: 17px 1px;
+  text-decoration: none;
+  margin: 0 -125px;
+  font-size: 17px;
+  margin-left: 170px;
+}
+
+.BlackBox {
+  background-image: linear-gradient(to bottom, #18212a, #1e2933, #18212a);
+  padding: 10px; 
+  width: 470px;
+  height: 258px; 
+  margin-left: 168px;
+  margin-top: 3px;
+}
+
+.BlueBox {
+  background-color: #1c3b56;
+  padding: 10px; 
+  width: 470px;
+  height: 258px; 
+  margin-left: 658px;
+  margin-top: -278px;
+}
+
+.BottomTxtWhite1{
+	color: #a9c3cc;
+	font-family: sans-serif;
+	font-size: 23px;
+	margin-left: 357px;
+	margin-top: 25px;
+}
+
+.BottomTxtWhite2{
+	color: #a9c3cc;
+	font-family: sans-serif;
+	font-size: 23px;
+	margin-left: 397px;
+	margin-top: 6px;
+}
+
+.BottomTxtYellow{
+	color: #cfb852;
+	font-family: sans-serif;
+	font-size: 23px;
+	margin-left: 800px;
+	margin-top: -26px;
+	text-decoration: underline;
+}
+
+.YellowButton {
+  border-radius: 6px;
+  background-image: linear-gradient(#ffdf76 30%,#ffd343 70%);
+  padding: 10px; 
+  width: 23px;
+  height: 23px; 
+  margin-left: 593px;
+  margin-top: -344px;
+}
+
+.YellowButton:before{
+	content: ">_";
+	font-family: sans-serif;
+	font-size: 16px;
+	color: #403e21;
+	line-height: line-height: 2.1;
+}
+
+.Code1 {
+	font-family: Consolas;
+	font-size: 15px;
+	margin-left: 192px;
+	margin-top: -41px;
+	color: #40454a;
+}
+
+.Code2 {
+	font-family: Consolas;
+	font-size: 15px;
+	margin-left: 192px;
+	margin-top: 5px;
+	color: #148519;
+}
+
+.Code3 {
+	font-family: Consolas;
+	font-size: 15px;
+	margin-left: 192px;
+	margin-top: 5px;
+	color: white;
+}
+
+.Button1 {
+  border-radius: 6px;
+  background-image: linear-gradient(#2d608f 10%,#265075 70%);
+  padding: 10px; 
+  width: 12px;
+  height: 12px; 
+  margin-left: 803px;
+  margin-top: 0px;
+  box-shadow: 1px 1px 5px #292828;
+}
+
+.Button1:before{
+	content: "1";
+	font-family: sans-serif;
+	font-size: 16px;
+	color: #a9c3cc;
+	line-height: line-height: 2.1;
+}
+
+.Button2 {
+  border-radius: 6px;
+  background-image: linear-gradient(#2d608f 10%,#265075 70%);
+  padding: 10px; 
+  width: 12px;
+  height: 12px; 
+  margin-left: 843px;
+  margin-top: -32px;
+  box-shadow: 1px 1px 5px #292828;
+}
+
+.Button2:before{
+	content: "2";
+	font-family: sans-serif;
+	font-size: 16px;
+	color: #a9c3cc;
+	line-height: line-height: 2.1;
+}
+
+.Button3 {
+  border-radius: 6px;
+  background-image: linear-gradient(#2d608f 10%,#265075 70%);
+  padding: 10px; 
+  width: 12px;
+  height: 12px; 
+  margin-left: 883px;
+  margin-top: -32px;
+  box-shadow: 1px 1px 5px #292828;
+}
+
+.Button3:before{
+	content: "3";
+	font-family: sans-serif;
+	font-size: 16px;
+	color: #a9c3cc;
+	line-height: line-height: 2.1;
+}
+
+.Button4 {
+  border-radius: 6px;
+  background-image: linear-gradient(#2d608f 10%,#265075 70%);
+  padding: 10px; 
+  width: 12px;
+  height: 12px; 
+  margin-left: 923px;
+  margin-top: -32px;
+  box-shadow: 1px 1px 5px #292828;
+}
+
+.Button4:before{
+	content: "4";
+	font-family: sans-serif;
+	font-size: 16px;
+	color: #a9c3cc;
+	line-height: line-height: 2.1;
+}
+
+.Button5 {
+  border-radius: 6px;
+  background-image: linear-gradient(#2d608f 10%,#265075 70%);
+  padding: 10px; 
+  width: 12px;
+  height: 12px; 
+  margin-left: 963px;
+  margin-top: -32px;
+  box-shadow: 1px 1px 5px #292828;
+}
+
+.Button5:before{
+	content: "5";
+	font-family: sans-serif;
+	font-size: 16px;
+	color: #a9c3cc;
+	line-height: line-height: 2.1;
+}
+
+.Text1{
+	font-family: sans-serif;
+	font-weight: bold;
+	font-size: 19px;
+	margin-left: 696px;
+	margin-top: -238px;
+	color: #f5cc43;
+}
+
+.Text2{
+	font-family: sans-serif;
+	font-size: 14px;
+	margin-left: 696px;
+	margin-top: 13px;
+	color: white;
+}
+
+.Text3{
+	font-family: sans-serif;
+	font-size: 14px;
+	margin-left: 696px;
+	margin-top: 13px;
+	color: #f5cc43;
+	text-decoration: underline;
+}
+
+.searchImg{
+	max-width:1.7%;
+    height:auto;
+	margin-left: 830px;
+	margin-top: -278px;
+}
+
+.bodyWhite{
+	background-color: white;
+}
+
+.BlueLine1 {
+  background-color: #83b1d7;
+  width: 267px;
+  height: 4px; 
+  margin-left: 90px;
+  margin-top: 38px;
+}
+
+.BlueLine2 {
+  background-color: #83b1d7;
+  width: 267px;
+  height: 4px; 
+  margin-left: 383px;
+  margin-top: -4px;
+}
+
+.BlueLine3 {
+  background-color: #83b1d7;
+  width: 267px;
+  height: 4px; 
+  margin-left: 676px;
+  margin-top: -4px;
+}
+
+.BlueLine4 {
+  background-color: #83b1d7;
+  width: 267px;
+  height: 4px; 
+  margin-left: 969px;
+  margin-top: -4px;
+}
+
+.PowerIcon{
+	max-width:1.7%;
+    height:auto;
+	margin-left: 110px;
+	margin-top: 22px;
+}
+
+.GetStarted{
+	margin-left: 138px;
+	margin-top: -21px;
+	color: #747474;
+	font-family: sans-serif;
+	font-size: 19px;
+}
+
+.DownloadIcon{
+	max-width = 1.2%;
+	height: auto;
+	margin-left: 402px;
+	margin-top: -25px;
+}
+
+.Download{
+	margin-left: 440px;
+	margin-top: -21px;
+	color: #747474;
+	font-family: sans-serif;
+	font-size: 19px;
+}
+
+.DocIcon{
+	max-width: 1.9%;
+	height: auto;
+	margin-left: 700px;
+	margin-top: -24px;
+}
+
+.Docs{
+	margin-left: 730px;
+	margin-top: -21px;
+	color: #747474;
+	font-family: sans-serif;
+	font-size: 19px;
+}
+
+.JobsIcon{
+	max-width: 1.9%;
+	height: auto;
+	margin-left: 1000px;
+	margin-top: -24px;
+}
+
+.Jobs{
+	margin-left: 1032px;
+	margin-top: -21px;
+	color: #747474;
+	font-family: sans-serif;
+	font-size: 19px;
+}
+
+.GSTxt{
+	font-family: sans-serif;
+	font-size: 15px;
+	color: black;
+	margin-left: 110px;
+	margin-top: 3px;
+	margin-right: 1000px;
+	line-height: 1.6;
+}
+
+.GSTxtB{
+	font-family: sans-serif;
+	font-size: 15px;
+	color: #3776ab;
+	margin-left: 110px;
+	margin-top: 17px;
+	margin-right: 950px;
+	line-height: 1.6;
+}
+
+.DwnTxt{
+	font-family: sans-serif;
+	font-size: 15px;
+	color: black;
+	margin-left: 400px;
+	margin-top: -135px;
+	margin-right: 700px;
+	line-height: 1.6;
+}
+
+.DocTxt{
+	font-family: sans-serif;
+	font-size: 15px;
+	color: black;
+	margin-left: 703px;
+	margin-top: -71px;
+	margin-right: 390px;
+	line-height: 1.6;
+}
+
+.DocTxtB{
+	font-family: sans-serif;
+	font-size: 15px;
+	color: #3776ab;
+	margin-left: 703px;
+	margin-top: 13px;
+	margin-right: 390px;
+	line-height: 1.6;
+}
+
+.JobsTxt{
+	font-family: sans-serif;
+	font-size: 15px;
+	color: black;
+	margin-left: 1000px;
+	margin-top: -107px;
+	margin-right: 90px;
+	line-height: 1.6;
+}
+
+.JobsTxtB{
+	font-family: sans-serif;
+	font-size: 15px;
+	color: #3776ab;
+	margin-left: 1000px;
+	margin-top: 13px;
+	margin-right: 390px;
+	line-height: 1.6;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
