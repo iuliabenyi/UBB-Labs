@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<style>
+			#first {
+				width: 1366px;
+				height: 625px;
+				position: absolute;
+				top: 0px;
+				background-color: red;
+			}
+			#second {
+				width: 1366px;
+				height: 625px;
+				position: absolute;
+				top: 0px;
+				margin-left: 1366px;
+				background-color: blue;
+			}
+			#third {
+				width: 1366px;
+				height: 625px;
+				position: absolute;
+				top: 0px;
+				margin-left: 2732px;
+				background-color: green;
+			}
+			#fourth {
+				width: 1366px;
+				height: 625px;
+				position: absolute;
+				top: 0px;
+				margin-left: 4098px;
+				background-color: yellow;
+			}	
+			div {
+				height: 200px;
+			}
+		</style>
+		<script src="jquery-2.0.3.js"></script>
+		<script>
+			$(document).ready(function(){
+				$(".firstt").click(function(){
+						$("#first").animate({left: '-1366px'}, "slow");
+						$("#second").animate({left: '-1366px'}, "slow");
+						$("#third").animate({left: '-1366px'}, "slow");
+						$("#fourth").animate({left: '-1366px'}, "slow");
+				});
+			});
+			$(document).ready(function(){
+				$(".secondd").click(function(){
+						$("#first").animate({left: '-2732px'}, "slow");
+						$("#second").animate({left: '-2732px'}, "slow");
+						$("#third").animate({left: '-2732px'}, "slow");
+						$("#fourth").animate({left: '-2732px'}, "slow");
+				});
+			});
+			$(document).ready(function(){
+				$(".thirdd").click(function(){
+						$("#first").animate({left: '-4098px'}, "slow");
+						$("#second").animate({left: '-4098px'}, "slow");
+						$("#third").animate({left: '-4098px'}, "slow");
+						$("#fourth").animate({left: '-4098px'}, "slow");
+				});
+			});
+			$(document).ready(function(){
+				$(".fourthh").click(function(){
+						$("#first").animate({left: '-5464px'}, "slow");
+						$("#second").animate({left: '-5464px'}, "slow");
+						$("#third").animate({left: '-5464px'}, "slow");
+						$("#fourth").animate({left: '-5464px'}, "slow");
+				});
+			});
+			
+			
+		</script>
+	</head>
+
+	<body>
+		<div id="first" class="firstt"></div>
+		<div></div>
+		<div id="second" class="secondd"></div>
+		<div></div>
+		<div id="third" class="thirdd"></div>
+		<div></div>
+		<div id="fourth" class="fourthh"></div>
+		
+	</body>
+
+</html> 
+

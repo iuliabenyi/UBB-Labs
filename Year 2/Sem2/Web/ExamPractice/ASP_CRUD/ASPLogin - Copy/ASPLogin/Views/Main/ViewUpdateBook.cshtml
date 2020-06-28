@@ -1,0 +1,68 @@
+﻿@using ASPLogin.DataAbstractionLayer;
+@using ASPLogin.Models;
+
+
+@{
+    var id = 0;
+    var keyword1 = "";
+    var keyword2 = "";
+    var keyword3 = "";
+    var keyword4 = "";
+    var keyword5 = "";
+
+    /*if (!IsPost)
+    {
+        if (id == 0)
+        {
+            Title = Request.QueryString["Title"];
+            DAL dal = new DAL();
+            Book book = dal.GetBook(Title);
+            Title = book.Title;
+        }
+    }*/
+
+    if (IsPost && !Request["updateBtn"].IsEmpty())
+    {
+        id = int.Parse(Request.Form["id"]);
+        keyword1 = Request.Form["keyword1"];
+        keyword2 = Request.Form["keyword2"];
+        keyword3 = Request.Form["keyword3"];
+        keyword4 = Request.Form["keyword4"];
+        keyword5 = Request.Form["keyword5"];
+        DAL dal = new DAL();
+        dal.UpdateDoc(id, keyword1, keyword2, keyword3, keyword4, keyword5);
+    }
+}
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UpdateDoc</title>
+</head>
+<body>
+    <!--@Html.ValidationSummary()-->
+    <p><a href="~/Main/ViewGetBooks">Return to the list of websites</a></p>
+    <form method="post">
+        <fieldset>
+            <legend>Doc Info</legend>
+            <p><span>Doc id: </span><span>@id</span></p>
+            <input type="text" name="id" value="@id" />
+            <p><span>Keyword1: </span><span>@keyword1</span></p>
+            <input type="text" name="keyword1" value="@keyword1" />
+            <p><span>Keyword2: </span><span>@keyword2</span></p>
+            <input type="text" name="keyword2" value="@keyword2" />
+            <p><span>Keyword3: </span><span>@keyword3</span></p>
+            <input type="text" name="keyword3" value="@keyword3" />
+            <p><span>Keyword4: </span><span>@keyword4</span></p>
+            <input type="text" name="keyword4" value="@keyword4" />
+            <p><span>Keyword5: </span><span>@keyword5</span></p>
+            <input type="text" name="keyword5" value="@keyword5" />
+            <p><input type="submit" name="updateBtn" value="Update Doc" /></p>
+        </fieldset>
+    </form>
+</body>
+</html>

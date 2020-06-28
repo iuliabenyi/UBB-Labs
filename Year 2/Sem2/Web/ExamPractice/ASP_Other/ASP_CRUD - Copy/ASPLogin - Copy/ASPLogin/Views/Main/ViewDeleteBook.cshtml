@@ -1,0 +1,48 @@
+﻿@using ASPLogin.DataAbstractionLayer;
+@using ASPLogin.Models;
+
+
+@{
+    var Title = "";
+
+    if (!IsPost)
+    {
+        if (!Request.QueryString["Title"].IsEmpty())
+        {
+            Title = Request.QueryString["Title"];
+            DAL dal = new DAL();
+            Book book = dal.GetBook(Title);
+            Title = book.Title;
+        }
+    }
+
+    if (IsPost && !Request["deleteBtn"].IsEmpty())
+    {
+        Title = Request.Form["Title"];
+        DAL dal = new DAL();
+        dal.DeleteBook(Title);
+    }
+}
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DeleteBook</title>
+</head>
+<body>
+    <!--@Html.ValidationSummary()-->
+    <p><a href="~/Main/ViewGetBooks">Return to the list of books</a></p>
+    <form method="post">
+        <fieldset>
+            <legend>Book Info</legend>
+            <p><span>Book Title:</span><span>@Title</span></p>
+            <input type="text" name="Title" value="@Title" />
+            <p><input type="submit" name="deleteBtn" value="Delete Book" /></p>
+        </fieldset>
+    </form>
+</body>
+</html>

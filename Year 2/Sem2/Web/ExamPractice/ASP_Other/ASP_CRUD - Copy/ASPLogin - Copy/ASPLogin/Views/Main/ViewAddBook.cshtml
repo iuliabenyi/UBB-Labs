@@ -1,0 +1,67 @@
+﻿@using ASPLogin.DataAbstractionLayer;
+@using ASPLogin.Models;
+
+@{
+    Layout = null;
+}
+
+@{ 
+    var Author = "";
+    var Title = "";
+    var Genre = "";
+    var Pages = 0;
+    var Lent = 0;
+
+    if (IsPost) {
+        Author = Request.Form["Author"];
+        Title = Request.Form["Title"];
+        Genre = Request.Form["Genre"];
+        Pages = int.Parse(Request.Form["Pages"]);
+        Lent = int.Parse(Request.Form["Lent"]);
+
+        DAL dal = new DAL();
+        dal.AddBook(Author, Title, Pages, Genre, Lent);
+    }
+
+}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>AddBook</title>
+    </head>
+    <body>
+        <!--@Html.ValidationSummary()-->
+        <p><a href=" ~/Main/ViewGetBooks">Return the list of books</a></p>
+        <form method="post">
+            <fieldset>
+                <legend>Book info</legend>
+                <p>
+                    <label for="Title">Title: </label><input type="text" name="Title" value="@Request.Form["Title"]" />
+                    <!--@Html.ValidationMessage("Title")-->
+                </p>
+                <p>
+                    <label for="Author">Author: </label><input type="text" name="Author" value="@Request.Form["Author"]" />
+                    <!--@Html.ValidationMessage("Author")-->
+                </p>
+                <p>
+                    <label for="Genre">Genre: </label><input type="text" name="Genre" value="@Request.Form["Genre"]" />
+                    <!--@Html.ValidationMessage("Genre")-->
+                </p>
+                <p>
+                    <label for="Pages">Pages: </label><input type="text" name="Pages" value="@Request.Form["Pages"]" />
+                    <!--@Html.ValidationMessage("Pages")-->
+                </p>
+                <p>
+                    <label for="Lent">Lent: </label><input type="text" name="Lent" value="@Request.Form["Lent"]" />
+                    <!--@Html.ValidationMessage("Lent")-->
+                </p>
+
+                <p><input type="submit" name="addBtn" value="Add Book" /></p>
+
+            </fieldset>
+        </form>
+    </body>
+</html>
+
+

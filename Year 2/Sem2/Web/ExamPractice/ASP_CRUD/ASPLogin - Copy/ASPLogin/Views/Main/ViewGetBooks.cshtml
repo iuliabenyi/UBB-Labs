@@ -1,0 +1,42 @@
+﻿@using ASPLogin.Models;
+@{
+    Layout = null;
+}
+@{ 
+    var nrDoc = 0;
+}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ViewGetBooks</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <div>
+            @{
+                List<Websites> webs = (List<Websites>)ViewData["webList"];
+            }
+            <table id="myTable">
+                <tr>
+                    <th>id</th>
+                    <th>url</th>
+                </tr>
+                @foreach (Websites web in webs)
+                {
+                    <tr>
+                        <td>@web.id</td>
+                        <td>@web.url</td>
+
+                    </tr>
+                    <p><span>Documents website </span><span>@web.id</span><span>: </span><span>@nrDoc</span></p>
+                }
+            </table>
+        </div>
+        <p><a href="~/Main/ViewUpdateBook">Update website</a></p>
+
+    </body>
+</html>
+

@@ -1,0 +1,152 @@
+<html>
+<head>
+	<style type="text/css">
+		.mytablerow {
+			background-color: #ff9999;
+		}
+	</style>
+	<script src="jquery-2.0.3.js"></script>
+	<script language="javascript">
+		function showAllBooks(books) {
+			var content = "<table><thead><tr><td>Author</td><td>Genre</td><td>Pages</td><td>Title</td><td>Lent</td></tr></thead>";
+			console.log(books);
+			i=0;
+			books.forEach(elem => {
+					book = elem;
+					if (i % 2 == 0) {
+						content += "<tr class='mytablerow'>";
+					} else {
+						content += "<tr>";
+					}
+					i++;
+					content += "<td>" + book.Author + "</td>" +
+							   "<td>" + book.Genre + "</td>" +
+							   "<td>" + book.Pages + "</td>" +
+							   "<td>" + book.Title + "</td>" +
+							   "<td>" + book.Lent + "<td>" +
+							   "<td>";
+					/*student.grades.forEach(grade => {
+						content += "Course: " + grade.course + ", Grade: " + grade.grade + " <br/> ";
+					});*/
+					content +="</td></tr>";
+			});
+			content += "</table>";
+
+			$("#main").html(content);
+		}
+
+		$(document).ready(function() {
+			$("#btn_getBooks").click(function() {
+				$.getJSON(
+					"controller.php",  
+					{ action: "getAllBooks" }, 
+					showAllBooks
+				);
+			});
+		});
+		
+		$(document).ready(function() {
+			$("#btn_insertBook").click(function() {
+				$.getJSON(
+					"controller.php",  
+					{ action: "insertBook", Author: $('#Author').val(), Genre: $('#Genre').val(), Pages: $('#Pages').val(), Title: $('#Title').val(), Lent: $('#Lent')  }, 
+					showAllBooks
+				);
+			});
+		});
+		
+		$(document).ready(function() {
+			$("#btn_deleteBook").click(function() {
+				$.getJSON(
+					"controller.php",
+					{action: "deleteBook", Title: $('#TitleDel').val()},
+					showAllBooks
+				)
+			})
+		})
+		
+		$(document).ready(function() {
+			$("#btn_updateBook").click(function() {
+				$.getJSON(
+					"controller.php",
+					{action: "updateBook", Title: $('#TitleUp').val(), Lent: $('#LentUp').val()},
+					showAllBooks
+				)
+			})
+		})
+		
+		$(document).ready(function() {
+			$("#btn_filterBook").click(function() {
+				$.getJSON(
+					"controller.php",
+					{action: "filterBook", Genre: $('#GenreFilter').val()},
+					showAllBooks
+				)
+			})
+		})
+		
+		$(document).ready(function() {
+			$("#btn_lendBook").click(function() {
+				$.getJSON(
+					"controller.php",
+					{action: "lendBook", Title: $('#TitleLend').val()},
+					showAllBooks
+				)
+			})
+		})
+		
+	</script>
+</head>
+<body>
+
+<p></p>
+
+<section style="border: 1px solid red; width: 400px">
+Get all books:<br/>
+	<input type="button" id="btn_getBooks" value="Get all books"/><br/>
+</section>
+<hr/>
+
+<section style="border: 1px solid red; width: 400px">
+	Insert book:<br/>
+	Author: <input type="text" name="Author" id="Author"><br/>
+	Genre: <input type="text" name="Genre" id="Genre"><br/>
+	Pages: <input type="text" name="Pages" id="Pages"><br/>
+	Title: <input type="text" name="Title" id="Title"><br/>
+	<input type="button" id="btn_insertBook" value="Insert book"/><br/>
+</section>
+<hr/>
+
+<section style="border: 1px solid red; width: 400px">
+	Delete book:<br/>
+	Title: <input type="text" name="TitleDel" id="TitleDel"><br/>
+	<input type="button" id="btn_deleteBook" value="Delete book"/><br/>
+</section>
+<hr/>
+
+<section style="border: 1px solid red; width: 400px">
+	Update book:<br/>
+	Title: <input type="text" name="TitleUp" id="TitleUp"><br/>
+	Lent: <input type="text" name="LentUp" id="LentUp"><br/>
+	<input type="button" id="btn_updateBook" value="Update book"/><br/>
+</section>
+<hr/>
+
+<section style="border: 1px solid red; width: 400px">
+	Get book from genre:<br/>
+	Genre: <input type="text" name="GenreFilter" id="GenreFilter"><br/>
+	<input type="button" id="btn_filterBook" value="Filter book"/><br/>
+</section>
+<hr/>
+
+<section style="width: 400px">
+	Lend a book:<br/>
+	Title: <input type="text" name="TitleLend" id="TitleLend"><br/>
+	<input type="button" id="btn_lendBook" value="Lend book"/><br/>
+</section>
+<hr/>
+
+<section id="main"></section>
+
+</body>
+</html>

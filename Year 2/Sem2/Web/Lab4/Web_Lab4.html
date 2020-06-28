@@ -1,0 +1,64 @@
+<html>
+	<head></head>
+		<body>
+			
+			<script type = "text/javascript">
+				array = [];
+				function addToArray()
+				{
+					
+					x = document.myForm;
+					input = parseInt(x.myInput.value);
+					console.log(input);
+					array.push(input);
+					return array.sort(function(a, b){return a-b});
+				}
+				//clicks = 0;
+				function doOnClick() {
+					//alert("Button");
+					var table = document.getElementById("Table");
+					table.innerHTML = "";
+					
+					array = addToArray();
+					console.log(array);
+					var row;				
+					//alert("Button");
+					for(let i = 0; i < array.length; i++)
+						{
+							//alert("Button");
+							
+							if(i % 5 == 0)
+								{
+									row = table.insertRow();
+								}
+							else
+								row = table.rows[ table.rows.length - 1 ];
+							//clicks += 1;
+							var cell = row.insertCell();
+							cell.innerHTML = array[i];
+						}
+					/*var row;
+					if(clicks % 5 == 0)
+						{
+							row = table.insertRow();
+						}
+					else
+						row = table.rows[ table.rows.length - 1 ];
+					clicks += 1;
+					var cell = row.insertCell();
+					cell.innerHTML = array[array.length - 1];*/
+				}
+				
+			</script>
+			
+			<form name = "myForm" action = "#" onsubmit = "return validate()">
+				Enter one number at a time: 
+				<input type = "number" name = "myInput">
+				<input type = "button" onClick = "doOnClick()" value = "Next">
+				<input type = "submit" value = "Send input">
+			</form>
+			<p id = "Div"></p>
+			<table id="Table" border="black">
+			</table>
+	</body>
+</html>

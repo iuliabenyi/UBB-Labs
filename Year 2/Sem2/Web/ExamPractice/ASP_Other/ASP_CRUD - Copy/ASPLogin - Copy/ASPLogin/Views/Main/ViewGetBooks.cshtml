@@ -1,0 +1,63 @@
+﻿@using ASPLogin.Models;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ViewGetBooks</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <div>
+            @{
+                List<Book> books = (List<Book>)ViewData["bookList"];
+            }
+            <table id="myTable">
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Genre</th>
+                    <th>Pages</th>
+                    <th>Lent</th>
+                </tr>
+                @foreach (Book book in books)
+                {
+                    <tr>
+                        <td>@book.Title</td>
+                        <td>@book.Author</td>
+                        <td>@book.Genre</td>
+                        <td>@book.Pages</td>
+                        <td>@book.Lent</td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <script>
+            /*var tableElements = document.getElementById("myTable");
+            for (var j = 0; j < tableElements.length; j++) {
+                var tableCells = tableElements[j];
+                var rows = tableCells.getElementsByTagName("tr");
+                for (var i = 0; i < rows.length; i++) {
+                    rows[i].style.backgroundColor = "red";
+                }
+
+            }*/
+
+            var tableElements = document.getElementById("myTable");
+            var rows = tableElements.getElementsByTagName("tr");
+            for (var i = 0; i < rows.length; i++) {
+                rows[i].style.backgroundColor = "red";
+            }
+
+        </script>
+
+        <p><a href="~/Main/ViewAddBook">Add a book</a></p>
+        <p><a href="~/Main/ViewDeleteBook">Delete a book</a></p>
+
+    </body>
+</html>
+

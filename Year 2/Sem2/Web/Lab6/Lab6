@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<style>
+			#btn1 {
+				width: 300px;
+				position: absolute;
+				top: 0px;
+			}
+			#btn2 {
+				width: 300px;
+				position: absolute;
+				top: 220px;
+			}
+			div {
+				height: 200px;
+			}
+		</style>
+		<script src="jquery-2.0.3.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("button").click(function(){
+						$("#btn1").animate({top: '220px'}, "slow");
+						$("#btn2").animate({top: '0px'}, "slow");
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<p><button id="btn1" class="btn btn-primary">Caption 1</button></p>
+		<div></div>
+		<p><button id="btn2" class="btn btn-danger">Caption 2</button></p>
+	</body>
+
+</html> 
+

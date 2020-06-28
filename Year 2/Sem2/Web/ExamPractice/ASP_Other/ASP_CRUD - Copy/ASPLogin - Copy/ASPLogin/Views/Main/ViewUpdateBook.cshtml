@@ -1,0 +1,52 @@
+﻿@using ASPLogin.DataAbstractionLayer;
+@using ASPLogin.Models;
+
+
+@{
+    var Title = "";
+    var Lent = 0;
+
+    if (!IsPost)
+    {
+        if (!Request.QueryString["Title"].IsEmpty())
+        {
+            Title = Request.QueryString["Title"];
+            DAL dal = new DAL();
+            Book book = dal.GetBook(Title);
+            Title = book.Title;
+        }
+    }
+
+    if (IsPost && !Request["updateBtn"].IsEmpty())
+    {
+        Title = Request.Form["Title"];
+        Lent = int.Parse(Request.Form["Lent"]);
+        DAL dal = new DAL();
+        dal.UpdateBook(Title, Lent);
+    }
+}
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UpdateBook</title>
+</head>
+<body>
+    <!--@Html.ValidationSummary()-->
+    <p><a href="~/Main/ViewGetBooks">Return to the list of books</a></p>
+    <form method="post">
+        <fieldset>
+            <legend>Book Info</legend>
+            <p><span>Book Title: </span><span>@Title</span></p>
+            <input type="text" name="Title" value="@Title" />
+            <p><span>Lent: </span><span>@Lent</span></p>
+            <input type="text" name="Lent" value="@Lent" />
+            <p><input type="submit" name="updateBtn" value="Update Book" /></p>
+        </fieldset>
+    </form>
+</body>
+</html>

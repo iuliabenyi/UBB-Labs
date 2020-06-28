@@ -1,0 +1,29 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+    <title>Users</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #FCB5FA;
+        }
+    </style>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script language="javascript">
+        $(document).ready(function () {
+            $("#logoutBtn").click(function () {
+                sessionStorage.setItem("currentUser", null);
+                console.log(JSON.parse(sessionStorage["currentUser"]));
+                location.href = 'Login';
+            })
+        });
+    </script>
+    <body>
+        <button type="button" id=" logoutBtn">Logout</button>
+    </body>
+</html>
+

@@ -1,0 +1,49 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script language="javascript">
+        $(document).ready(function () {
+            sessionStorage.setItem("currentUser", null);
+            $("#b1").click(function () {
+                if ($('#username').val().length && $('#password').val().length) {
+                    $.post(
+                        "/Login/Login",
+                        {
+                            username: $('#username').val(),
+                            password: $('#password').val()
+                        },
+                        function (data, success) {
+                            console.log(data);
+                            if (data["success"] === true) {
+                                var temp = { username: $('#username').val() };
+                                sessionStorage.setItem("currentUser", JSON.stringify(temp));
+                                console.log(JSON.parse(sessionStorage["currentUser"]));
+                                location.href = 'Main/ViewGetBooks';
+                            } else {
+                                $("#error").html("<p>Bad credentials!</p>");
+                            }
+                        }
+                    );
+                } else {
+                    alert("Fields should be non-empty!")
+                }
+            });
+        });
+    </script>
+</head>
+    <body>
+        <h2 style="position: absolute; left: 45%; top: 34%;">Login</h2>
+        <form style="position: absolute; left: 40%; top: 43%">
+            <p>Username: <input type="text" name="username" id="username" /> </p>
+            <p>Password: <input type="text" name="password" id="password" /> </p>
+            <button type="button" id="b1" class="button">Login</button>
+        </form>
+    </body>
+</html>
+
