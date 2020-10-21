@@ -1,0 +1,49 @@
+===================== Symbol Table represented as HashTable =====================
+
+Each key is represented as a Singly Linked List in order to resolve collisions.
+Functions
+	LinkedList 
+		lookup(self, val)
+			Finds the given value in the LinkedList
+			Input: 
+				- val: the given value
+			Output: 
+				- the index of the value if it exists 
+				- 0 otherwise
+		put(self, val)
+			Inserts the given value
+			Input: 
+				- val: the given value
+			Output:
+				- 1 if val is the first value to be inserted
+				- the next available index if the Linked List already contained elements
+				- 0 otherwise
+		display(self)
+			Prints the LinkedList
+			Output:
+				- the Linked List as a string
+
+	SymTbl
+		hashF(self, key)
+			The hashing function; this computes the sum of every character's ASCII code from the given string modulo the HashTable's capacity
+			Input:
+				- key: the given key
+			Output:
+				- the hashed value
+		lookup(self, val)
+			Finds the given value in the HashTable
+			Input: 
+				- val: the given value
+			Output: 
+				- the key and the found value if it exists
+				- 0 otherwise
+		put(self, key)
+			Inserts the given key
+			Input: 
+				- key: the given key
+			Output:
+				- the index where the kay was put
+		display(self)
+			Prints the HashTable
+			Output:
+				- the HashTable as a string
