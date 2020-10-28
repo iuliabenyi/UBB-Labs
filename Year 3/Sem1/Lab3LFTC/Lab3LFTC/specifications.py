@@ -1,7 +1,7 @@
 
 operators = ["+", "-", "*", "/", "este", "maiMic", "maiMare", "maiMicEgal", "egal", "nuEgal", "maiMareEgal"]
 separators = ["[", "]", "(", ")", "{", "}", ",", ":", ";", " "]
-reserved = ["char", "string", "int", "float", "bool", "const", "totFacemPasi", "totFacem", "totFacemDaca", "daca", "altDaca", "dacaNu", "citeste", "scrie"]
+reserved = ["char", "string", "int", "float", "bool", "const", "totFacemPasi", "and", "or", "totFacem", "totFacemDaca", "daca", "altDaca", "dacaNu", "citeste", "scrie"]
 
 spec = operators + separators + reserved;
 codificationTable = {"constant": 0, "identifier": 1}

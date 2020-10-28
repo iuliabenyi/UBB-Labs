@@ -47,3 +47,4 @@ class LinkedList:
                 #the last one
                 print(str(currNode.val))
             currNode = currNode.next
+

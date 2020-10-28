@@ -1,5 +1,7 @@
 from LinkedList import *
 
+
+
 class SymTbl:
     def __init__(self, cap=50):
         self.cap = cap
@@ -25,13 +27,19 @@ class SymTbl:
         return 0
 
     def put(self, key):
-        self.size += 1
-        indx = self.hashF(key)
-        self.dict[indx].put(key)
-        return indx
+        if self.lookup(key) == 0:
+            self.size += 1
+            indx = self.hashF(key)
+            self.dict[indx].put(key)
+            return indx
+        else:
+            return self.lookup(key);
 
     def display(self):
         for k in self.dict.keys():
             if self.dict[k] is not None:
                 print("ID :", str(k), ": ")
                 self.dict[k].display()
+
+    def __str__(self):
+        return str(self.dict)

@@ -1,0 +1,8 @@
+int[] v[100];
+int sum este 0;
+totFacemPasi(int i este (0, lungime(v), 1))
+{
+int x;
+citeste x;
+sum este sum + x;
+}

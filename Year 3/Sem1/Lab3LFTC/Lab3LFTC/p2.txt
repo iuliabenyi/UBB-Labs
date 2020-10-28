@@ -1,0 +1,14 @@
+int n1, n2;
+citeste n1;
+citeste n2;
+int gcd;
+totFacemDaca n1 nuEgal n2
+{
+daca n1 maiMare n2
+{
+n1 este n1 - n2;
+}
+dacaNu
+{ n2 este n2 - n1; }
+}
+gcd este n1;

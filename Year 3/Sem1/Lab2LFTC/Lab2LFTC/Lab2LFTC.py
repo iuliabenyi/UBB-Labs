@@ -10,4 +10,5 @@ print('123455: ' + str(symTbl.put('123455')))
 
 print('aaaaaaaaaaaaaaaaa: ' + str(symTbl.lookup('aaaaaaaaaaaaaaaaa')))
 print('123455: ' + str(symTbl.lookup('123455')))
+print("----------------------------------------------------------")
 symTbl.display()

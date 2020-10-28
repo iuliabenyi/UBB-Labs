@@ -22,8 +22,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Lab3LFTC.py" />
-    <Compile Include="Models\LinkedList.py" />
-    <Compile Include="Models\SymTbl.py" />
+    <Compile Include="LinkedList.py" />
+    <Compile Include="PIF.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SymTbl.py" />
     <Compile Include="scanner.py">
       <SubType>Code</SubType>
     </Compile>
@@ -32,7 +35,21 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
+    <Content Include="output.txt">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="p1.txt">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="p2.txt">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="p3.txt">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="p3err.txt">
+      <SubType>Code</SubType>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
