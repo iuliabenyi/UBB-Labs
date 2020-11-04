@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Lab4LFTC", "Lab4LFTC\Lab4LFTC.pyproj", "{C9F1511B-A7E7-4B2F-A050-B21CF8BE412E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C9F1511B-A7E7-4B2F-A050-B21CF8BE412E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9F1511B-A7E7-4B2F-A050-B21CF8BE412E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C3CFE480-3241-498A-AFEE-3DC235698629}
+	EndGlobalSection
+EndGlobal
