@@ -1,7 +1,5 @@
 from FA import *
 
-
-
 def main():
     fa = FA.readFA("FA.in")
     while(True):
@@ -17,6 +15,10 @@ def main():
             print(fa.displayS())
         elif cmd == 4:
             print(fa.displayF())
+        elif cmd == 5:
+            print("enter seq:")
+            sequence = input()
+            print(fa.isDFAFct(sequence))
         else:
             print("Wrong input!")
 

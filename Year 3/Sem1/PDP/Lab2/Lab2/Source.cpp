@@ -3,15 +3,15 @@
 #include <condition_variable>
 #include <thread>
 #include <vector>
+#include <queue>
 
 using namespace std;
 
 int sum = 0;
 mutex mtx;
 condition_variable var;
-int product;
-bool ready = false;
-bool done = false;
+int result = 0;
+std::queue<int> coada;
 
 tuple<vector<int>, vector<int>> vectorsTuple() {
 	int n;
@@ -36,38 +36,47 @@ tuple<vector<int>, vector<int>> vectorsTuple() {
 	return make_tuple(*v1, *v2);
 }
 
-void consumer() {
-	unique_lock<mutex> lck(mtx); // unique ownership
-	var.wait(lck, [] {return ready; }); // var blocked until notified
-	sum += product;
-	done = true;
-	lck.unlock();
-	var.notify_one(); // var notified
+void producer (vector<int> v1, vector<int> v2) {
+	for (int i = 0; i < v1.size(); i++) {
+		unique_lock<mutex> lck(mtx);
+		while(!coada.empty())
+		{
+			var.wait(lck);
+		}
+		int prod = v1[i] * v2[i];
+		coada.emplace(prod);
+		var.notify_one();
+	}
 }
 
-void producer(int i, int j) {
-	unique_lock<mutex> lck(mtx);
-	product = i * j;
-	ready = true;
-	var.notify_one();
+void consumer(int n) {
+	for(int i = 0; i < n; i++) {
+		unique_lock<mutex> lck(mtx);
+		while (coada.empty())
+		{
+			var.wait(lck);
+		}
+		int prod = coada.front();
+		coada.pop();
+		sum += prod;
+		lck.unlock();
+		var.notify_one();
+	}
 }
 
 int main()
 {
-	thread p;
-	thread c;
 	vector<int> v1;
 	vector<int> v2;
 
 	tie(v1, v2) = vectorsTuple();
-	for (int i = 0; i < v1.size(); i++) {
-		thread p(producer, v1[i], v2[i]);
-		thread c(consumer);
-		p.join();
-		c.join();
-		ready = false;
-		done = false;
-	}
+	thread p(producer, v1, v2);
+	thread c(consumer, v1.size());
+	p.join();
+	c.join();
+	
+	
+	
 
 	cout << "\nv1 x v2 = " << sum << "\n";
 }
