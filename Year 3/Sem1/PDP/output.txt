@@ -1,0 +1,42 @@
+Task 3 simple threads
+Time: 7
+Size: 3
+Threads: 2
+
+
+
+Task 3 thread pool
+Time: 4
+Size: 3
+Threads: 2
+
+
+
+Task 3 simple threads
+Time: 1
+Size: 3
+Threads: 2
+
+
+
+Task 3 thread pool
+Time: 2
+Size: 3
+Threads: 2
+
+
+
+Task 3 simple threads
+Time: 2
+Size: 3
+Threads: 2
+
+
+
+Task 3 thread pool
+Time: 2
+Size: 3
+Threads: 2
+
+
+
