@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.EditPage"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="110sp"
+        android:layout_marginTop="30sp"
+        android:text="Edit a song"
+        android:textSize="40sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="67dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="60dp"
+        android:orientation="horizontal"
+        tools:context=".SongPage">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="134dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Song: "
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/songDetails"
+            android:layout_width="91dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-250dp"
+            android:layout_weight="1"
+            android:text=""
+            android:textSize="25sp" />
+
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/titleTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="70dp"
+        android:ems="10"
+        android:hint="New Title"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/doneBtn"
+        android:layout_width="148dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="130dp"
+        android:layout_marginTop="160dp"
+        android:text="Done" />
+
+
+
+</LinearLayout>

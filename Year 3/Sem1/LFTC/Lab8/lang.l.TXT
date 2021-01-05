@@ -1,0 +1,59 @@
+%{
+    #include <math.h>
+    #include <stdio.h>
+    #include "scanner.h"
+    int lines = 0;
+%}
+
+DIGIT             	[0-9]
+WORD             	["]([ _a-zA-Z])*["]
+NUMBER            	[1-9][0-9]*|0
+ID                	[a-zA-Z][a-zA-Z0-9]*
+CT                	{NUMBER}|{WORD}
+
+%%
+
+"int"           	{printf("Reserved word: %s\n", yytext); return int;}
+"bool"          	{printf("Reserved word: %s\n", yytext); return bool;}
+"string"        	{printf("Reserved word: %s\n", yytext); return string;}
+"float"         	{printf("Reserved word: %s\n", yytext); return float;}
+"char"          	{printf("Reserved word: %s\n", yytext); return char;}
+"const"        		{printf("Reserved word: %s\n", yytext); return const;}
+"totFacemPasi"          {printf("Reserved word: %s\n", yytext); return totFacemPasi;}
+"totFacemPasiDaca"	{printf("Reserved word: %s\n", yytext); return totFacemPasiDaca;}
+"daca"          	{printf("Reserved word: %s\n", yytext); return daca;}
+"altDaca"          	{printf("Reserved word: %s\n", yytext); return altDaca;}
+"dacaNu"          	{printf("Reserved word: %s\n", yytext); return dacaNu;}
+"citeste"          	{printf("Reserved word: %s\n", yytext); return citeste;}
+"scrie"          	{printf("Reserved word: %s\n", yytext); return scrie;}
+
+{ID}            	{printf("Identifier: %s\n", yytext); return id;}
+{CT}            	{printf("Constant: %s\n", yytext); return ct;}
+
+"+"             	{printf("Operator: %s\n", yytext); return +;}
+"-"             	{printf("Operator: %s\n", yytext); return -;}
+"*"             	{printf("Operator: %s\n", yytext); return *;}
+"/"             	{printf("Operator: %s\n", yytext); return /;}
+"<"             	{printf("Operator: %s\n", yytext); return maiMic;}
+"<="            	{printf("Operator: %s\n", yytext); return maiMicEgal;}
+"=="            	{printf("Operator: %s\n", yytext); return egal;}
+">="            	{printf("Operator: %s\n", yytext); return maiMareEgal;}
+">"             	{printf("Operator: %s\n", yytext); return maiMare;}
+"="             	{printf("Separator: %s\n", yytext); return este;}
+"{"             	{printf("Separator: %s\n", yytext); return {;}
+"}"             	{printf("Separator: %s\n", yytext); return };}
+"["             	{printf("Separator: %s\n", yytext); return [;}
+"]"             	{printf("Separator: %s\n", yytext); return ];}
+"("             	{printf("Separator: %s\n", yytext); return (;}
+")"             	{printf("Separator: %s\n", yytext); return );}
+";"             	{printf("Separator: %s\n", yytext); return ;;}
+","             	{printf("Separator: %s\n", yytext); return ,;}
+":"             	{printf("Separator: %s\n", yytext); return :;}
+[ \t]+          	{}
+[\n]            	{++lines;}
+.               	{printf("Illegal symbol: %s at line %u", yytext, lines); return -1;}  
+%%
+
+int yywrap(void){
+    return 1;
+}
